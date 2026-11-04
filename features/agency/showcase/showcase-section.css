@@ -1,0 +1,41 @@
+.showcase-section {
+  background: var(--white);
+  color: var(--charcoal);
+}
+.showcase-intro {
+  max-width: 65ch;
+  margin-top: 28px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.showcase-example {
+  margin-top: 80px;
+}
+.showcase-copy {
+  max-width: 72ch;
+  margin-bottom: 32px;
+}
+.showcase-copy h3 {
+  font-size: clamp(28px, 3.5vw, 44px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+.showcase-copy p {
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.showcase-section .website-preview {
+  max-width: 100%;
+  padding-bottom: 0;
+}
+@media (max-width: 760px) {
+  .showcase-example {
+    margin-top: 48px;
+  }
+  .showcase-intro,
+  .showcase-copy p {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,134 @@
+.hero-shell {
+  padding: 24px;
+  background-color: var(--white);
+  background-image: linear-gradient(to right, var(--rule) 1px, transparent 1px);
+  background-size: calc(100% / 11) 100%;
+}
+.hero {
+  position: relative;
+  min-height: min(820px, calc(100svh - 48px));
+  height: 760px;
+  max-height: 960px;
+  overflow: clip;
+  border-radius: 0;
+  background: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.hero-center {
+  position: absolute;
+  inset: 118px 0 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  isolation: isolate;
+}
+.hero h1 {
+  z-index: 1;
+  position: absolute;
+  width: max-content;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(130px, 23.5vw, 370px);
+  font-weight: 800;
+  letter-spacing: -0.075em;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--yellow);
+  padding-right: 0.075em;
+}
+.hero-burst {
+  overflow: visible;
+  position: absolute;
+  width: min(47vw, 640px);
+  height: auto;
+  color: #8f8500;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-statement {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(40px, 4.8vw, 72px);
+  line-height: 1.03;
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  margin-left: 4px;
+}
+.hero-statement > span {
+  color: var(--charcoal);
+}
+.hero-side {
+  position: absolute;
+  left: 28px;
+  top: 47%;
+  writing-mode: vertical-rl;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+.hero-bottom {
+  position: absolute;
+  bottom: 31px;
+  left: 36px;
+  right: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  font-size: 9px;
+}
+.hero-bottom > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: clamp(11px, 1vw, 14px);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.hero-bottom i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: #171717;
+  border-radius: 50%;
+}
+.discipline-ribbon {
+  background: var(--yellow);
+  overflow: hidden;
+  padding-block: 13px;
+}
+.discipline-ribbon > div {
+  display: flex;
+  width: max-content;
+  animation: discipline-scroll 26s linear infinite;
+}
+.ribbon-group {
+  display: flex;
+  flex-shrink: 0;
+  min-width: 100vw;
+  justify-content: space-around;
+}
+.ribbon-group > span {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 20px;
+  font-size: clamp(20px, 2.7vw, 38px);
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.ribbon-group svg {
+  width: 24px;
+  height: 24px;
+}
+@keyframes discipline-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,102 @@
+.expertise-section {
+  background: var(--white);
+  padding-bottom: 80px;
+  padding-inline: 0;
+}
+.expertise-section > .container {
+  width: min(calc(100% - var(--gutter) * 2), 1280px);
+  margin-bottom: 70px;
+}
+.service-list {
+  border-bottom: 1px solid #d1d1d1;
+}
+.service {
+  --service-columns: 0.45fr minmax(0, 4.05fr) 42px;
+  --service-gap: 24px;
+  --button-primary-bg: var(--charcoal);
+  --button-primary-fg: var(--yellow);
+  padding-inline: var(--gutter);
+  border-top: 1px solid #d1d1d1;
+  transition: background-color 0.2s;
+}
+.service:first-child,
+.service[open],
+.service:hover {
+  background: var(--yellow);
+}
+.service summary {
+  display: grid;
+  grid-template-columns: var(--service-columns);
+  align-items: center;
+  gap: var(--service-gap);
+  padding-block: 25px;
+  max-width: 1280px;
+  margin-inline: auto;
+  cursor: pointer;
+  list-style: none;
+}
+.service summary::-webkit-details-marker {
+  display: none;
+}
+.service-number {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #171717;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #fff, #e8e8e8);
+  box-shadow:
+    0 2px 0 #b2b2b2,
+    0 4px 6px #17171720,
+    inset 0 1px 0 #fff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+}
+.service h3 {
+  font-size: clamp(23px, 3.2vw, 43px);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  font-weight: 650;
+}
+.service-toggle {
+  justify-self: end;
+}
+.service .service-chevron-up {
+  display: none;
+}
+.service[open] .service-chevron-down {
+  display: none;
+}
+.service[open] .service-chevron-up {
+  display: block;
+}
+.service-description {
+  display: grid;
+  grid-template-columns: var(--service-columns);
+  gap: 24px var(--service-gap);
+  align-items: start;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-bottom: 32px;
+}
+.service-description > p {
+  grid-column: 2;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 72ch;
+}
+
+.service-inline-tool {
+  display: inline-block;
+  vertical-align: -0.3em;
+  margin-inline: 0.15em;
+}
+.service-inline-tool img {
+  display: block;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}

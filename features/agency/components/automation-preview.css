@@ -1,0 +1,76 @@
+.automation-preview {
+  width: 100%;
+  margin: 0;
+}
+.automation-preview h3 {
+  margin: 0;
+  font-size: clamp(22px, 2.4vw, 32px);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+.automation-preview > p {
+  max-width: 65ch;
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.automation-flow {
+  padding: 0;
+  margin: 28px 0 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.automation-flow li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--charcoal);
+  color: var(--yellow);
+}
+.automation-flow strong {
+  font-size: 20px;
+  font-weight: 550;
+  letter-spacing: -0.025em;
+}
+.automation-flow li > span {
+  color: #c0c0c0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.automation-flow .automation-connector {
+  position: absolute;
+  right: -26px;
+  top: calc(50% - 10px);
+  color: var(--charcoal);
+}
+.automation-preview figcaption {
+  margin-top: 16px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+@media (max-width: 760px) {
+  .automation-preview > p {
+    font-size: 13px;
+  }
+  .automation-flow {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 24px;
+  }
+  .automation-flow li {
+    padding: 20px;
+  }
+  .automation-flow .automation-connector {
+    top: auto;
+    bottom: -24px;
+    right: calc(50% - 10px);
+    transform: rotate(90deg);
+  }
+}

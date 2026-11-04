@@ -1,0 +1,42 @@
+@media (max-width: 1000px) {
+  .service {
+    --service-columns: 42px minmax(0, 1fr) 42px;
+    --service-gap: 20px;
+  }
+  .service-description > p {
+    grid-column: 2 / -1;
+  }
+}
+@media (max-width: 760px) {
+  .expertise-section > .container {
+    margin-bottom: 42px;
+  }
+  .service {
+    --service-columns: 32px minmax(0, 1fr) 36px;
+    --service-gap: 13px;
+  }
+  .service summary {
+    padding-block: 21px;
+  }
+  .service h3 {
+    font-size: clamp(20px, 4.6vw, 30px);
+    letter-spacing: -0.04em;
+  }
+  .service-number {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+  .service-description {
+    padding-bottom: 24px;
+    gap: 20px var(--service-gap);
+  }
+  .service-description > p {
+    font-size: 13px;
+  }
+}
+@media (max-width: 370px) {
+  .service h3 {
+    font-size: 19px;
+  }
+}

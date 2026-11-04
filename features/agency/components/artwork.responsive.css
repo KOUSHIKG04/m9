@@ -1,0 +1,42 @@
+@media (max-width: 1000px) {
+  .equalizer {
+    gap: 8px;
+  }
+}
+@media (max-width: 760px) {
+  .project-art {
+    aspect-ratio: 1.1;
+  }
+  .nova-word {
+    font-size: clamp(28px, 7.5vw, 50px);
+  }
+  .pulse-word {
+    top: 16px;
+    left: 16px;
+    font-size: 12px;
+  }
+  .equalizer {
+    gap: 5px;
+    left: 9%;
+    right: 9%;
+    height: 70%;
+  }
+  .kinetic-word {
+    font-size: 25vw;
+  }
+  .art-orbit::after {
+    width: 8px;
+    height: 8px;
+  }
+  .art-compact {
+    aspect-ratio: 2.1;
+  }
+}
+@media (max-width: 370px) {
+  .nova-word {
+    font-size: 70px;
+  }
+  .kinetic-word {
+    font-size: 170px;
+  }
+}

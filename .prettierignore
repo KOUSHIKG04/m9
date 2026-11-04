@@ -1,0 +1,21 @@
+# Dependencies and generated output
+node_modules/
+.next/
+out/
+build/
+coverage/
+next-env.d.ts
+*.tsbuildinfo
+
+# Package-manager and skill-managed files
+package-lock.json
+skills-lock.json
+.agents/
+.architecture/
+.codex/
+AGENTS.md
+
+# Local verification output and copied upstream runtime
+.impeccable/review/
+.impeccable/mocks/
+components/stageshow/

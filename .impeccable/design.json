@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-04T11:51:42.471993+00:00",
+  "title": "Design System: MOTIVE 9",
+  "extensions": {
+    "colorMeta": {
+      "yellow": {
+        "role": "primary",
+        "displayName": "Electric Yellow"
+      },
+      "charcoal": {
+        "role": "neutral",
+        "displayName": "Charcoal"
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White"
+      },
+      "gray": {
+        "role": "neutral",
+        "displayName": "Brand Gray"
+      },
+      "dark-secondary": {
+        "role": "neutral",
+        "displayName": "Secondary Text on Charcoal"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Hero Wordmark",
+        "purpose": "Oversized reference-pinned MOTIVE9 wordmark."
+      },
+      "headline": {
+        "displayName": "Section Headline",
+        "purpose": "Large tightly tracked section headings."
+      },
+      "body": {
+        "displayName": "Agency Body",
+        "purpose": "Short supporting agency copy; long-form detail copy uses a separate reading size."
+      },
+      "label": {
+        "displayName": "Section Label",
+        "purpose": "Compact reference-pinned section markers."
+      }
+    },
+    "shadows": [
+      {
+        "name": "mobile-navigation",
+        "value": "0 20px 40px #00000026",
+        "purpose": "Separates the open mobile menu from the hero; cards remain flat."
+      }
+    ],
+    "motion": [
+      {
+        "name": "hero-orbit",
+        "value": "requestAnimationFrame; up to 80 SVG units of radial spike extension",
+        "purpose": "Hovered individual spikes grow longer outward along their existing direction. No lateral bending. Inner anchors and SVG position stay fixed; static for reduced motion."
+      },
+      {
+        "name": "color-state",
+        "value": "background .2s, color .2s",
+        "purpose": "Primary pill state transitions."
+      },
+      {
+        "name": "arrow-state",
+        "value": "transform .25s",
+        "purpose": "Round arrow rotation."
+      },
+      {
+        "name": "equalizer-hover",
+        "value": "transform .5s",
+        "purpose": "Geometric work-cover hover response."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation: none !important; transition: none !important; scroll-behavior: auto",
+        "purpose": "Static composition and immediate navigation when reduced motion is requested."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-hero-min",
+        "value": "1600px"
+      },
+      {
+        "name": "tablet-max",
+        "value": "1000px"
+      },
+      {
+        "name": "mobile-max",
+        "value": "760px"
+      },
+      {
+        "name": "compact-max",
+        "value": "370px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Shared Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Flat filled pill control; white secondary variant; circular icon controls and no diagonal button icons.",
+      "html": "<button class=\"m9-button m9-button-primary m9-button-default\">Start a project</button>",
+      "css": "/* Shared flat, filled controls in the m9 palette. */\n/* Adapted from the older Motive9 controls, using the current brand palette. */\n.m9-button {\n  --button-radius: 999px;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n  gap: 10px;\n  min-height: 44px;\n  padding: 12px 20px;\n  border: 1px solid transparent;\n  border-radius: var(--button-radius);\n  font: inherit;\n  font-size: 12px;\n  font-weight: 500;\n  line-height: 1.3;\n  text-align: center;\n  text-decoration: none;\n  white-space: nowrap;\n  user-select: none;\n  cursor: pointer;\n  box-shadow: none;\n  transition:\n    background-color 180ms ease-out,\n    border-color 180ms ease-out,\n    color 180ms ease-out;\n}\n.m9-button svg {\n  flex-shrink: 0;\n  width: 16px;\n  height: 16px;\n  pointer-events: none;\n}\n.m9-button-primary {\n  background: var(--button-primary-bg, #fff21a);\n  color: var(--button-primary-fg, #171717);\n  border-color: color-mix(\n    in srgb,\n    var(--button-primary-bg, #fff21a) 80%,\n    #171717\n  );\n}\n.m9-button-primary:is(:hover, :focus-visible) {\n  background: color-mix(in srgb, var(--button-primary-bg, #fff21a) 84%, #fff);\n  color: var(--button-primary-fg, #171717);\n}\n.m9-button-secondary,\n.m9-button-ghost {\n  background: #fff;\n  color: #171717;\n  border-color: #dedede;\n}\n.m9-button-secondary:is(:hover, :focus-visible),\n.m9-button-ghost:is(:hover, :focus-visible) {\n  background: #f1f1f1;\n  border-color: #9a9a9a;\n}\n.m9-button-destructive {\n  background: #171717;\n  color: #fff;\n  border-color: #171717;\n}\n.m9-button:is(:active) {\n  box-shadow: none;\n}\n.m9-button:focus-visible {\n  outline: 2px solid var(--ring, #797100);\n  outline-offset: 4px;\n}\n.m9-button:disabled,\n.m9-button[aria-disabled=\"true\"] {\n  opacity: 0.5;\n  cursor: not-allowed;\n  box-shadow: none;\n}\n.m9-button-link {\n  background: #171717;\n  box-shadow: none;\n  padding: 12px 20px;\n  min-height: 44px;\n  border: 0;\n  color: #fff21a;\n  text-decoration: none;\n}\n.m9-button-xs {\n  min-height: 28px;\n  padding: 6px 10px;\n  font-size: 10px;\n}\n.m9-button-sm {\n  min-height: 36px;\n  padding: 8px 14px;\n  font-size: 11px;\n}\n.m9-button-lg {\n  min-height: 52px;\n  padding: 16px 24px;\n  font-size: 14px;\n}\n.m9-button-icon,\n.m9-button-icon-xs,\n.m9-button-icon-sm,\n.m9-button-icon-lg {\n  padding: 0;\n  aspect-ratio: 1;\n  border-radius: 50%;\n}\n.m9-button-icon {\n  width: 40px;\n  height: 40px;\n  min-height: 40px;\n}\n.m9-button-icon-xs {\n  width: 28px;\n  height: 28px;\n  min-height: 28px;\n}\n.m9-button-icon-sm {\n  width: 36px;\n  height: 36px;\n  min-height: 36px;\n}\n.m9-button-icon-lg {\n  width: 44px;\n  height: 44px;\n  min-height: 44px;\n}\n@media (prefers-reduced-motion: reduce) {\n  .m9-button {\n    transition: none;\n  }\n}\n"
+    },
+    {
+      "name": "Service Disclosure",
+      "kind": "custom",
+      "refersTo": "service-open",
+      "description": "Native expandable service row with aligned heading/content and up/down chevrons.",
+      "html": "<details class=\"ds-service\"><summary>Brand Identity <svg class=\"ds-down\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg><svg class=\"ds-up\" viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" aria-hidden=\"true\"><path d=\"m6 15 6-6 6 6\"/></svg></summary><p>A clear visual identity, thoughtfully made for your business.</p></details>",
+      "css": ".ds-service{font-family:Inter,sans-serif;padding:24px;border-block:1px solid #171717;color:#171717;background:#fff21a}.ds-service summary{display:flex;justify-content:space-between;align-items:center;cursor:pointer;list-style:none}.ds-up,.ds-service[open] .ds-down{display:none}.ds-service[open] .ds-up{display:block}.ds-service p{line-height:1.7}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Supplied MOTIVE 9 desktop reference",
+    "overview": "The supplied MOTIVE 9 desktop PDF is the visual authority. Oversized yellow type, a white gridded hero, radial geometry, a yellow discipline ribbon, alternating charcoal and white sections, and a yellow closing panel define the implemented world. This records the incumbent reference-pinned direction without introducing a new aesthetic.",
+    "keyCharacteristics": [
+      "Oversized tightly tracked Inter",
+      "Electric yellow, charcoal, and white",
+      "Fine rules and flat surfaces",
+      "Geometric concept artwork",
+      "Flat filled controls and rounded artwork wrappers"
+    ],
+    "rules": [
+      {
+        "name": "The Reference Palette Rule",
+        "body": "Preserve the yellow/charcoal/white section rhythm and derive geometric artwork from those colors.",
+        "section": "colors"
+      },
+      {
+        "name": "The Oversized Type Rule",
+        "body": "Preserve the large wordmark and compact headline tracking across responsive sizes.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do follow the supplied reference composition.",
+      "Do use the actual fluid gutter and responsive grids.",
+      "Do retain visible focus and native disclosure.",
+      "Do disable animation and transitions for reduced motion.",
+      "Do mark concept work honestly."
+    ],
+    "donts": [
+      "Don't introduce a replacement palette or type pairing.",
+      "Don't add fictitious clients, metrics, awards, or people.",
+      "Don't add ambient card shadows or content that depends on animation."
+    ]
+  }
+}

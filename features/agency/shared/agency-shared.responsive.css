@@ -1,0 +1,23 @@
+@media (max-width: 1000px) {
+  .section-pad {
+    padding-block: 72px;
+  }
+}
+@media (max-width: 760px) {
+  .section-pad {
+    padding-block: 64px;
+  }
+  .section-label {
+    font-size: 8px;
+    margin-bottom: 29px;
+  }
+  .display-heading {
+    font-size: clamp(46px, 9vw, 68px);
+    letter-spacing: -0.055em;
+  }
+  .section-heading-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 22px;
+  }
+}

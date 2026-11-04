@@ -1,0 +1,230 @@
+.people-section {
+  background: #000;
+  color: var(--white);
+}
+.people-section .display-heading {
+  color: var(--yellow);
+}
+.people-intro {
+  max-width: 65ch;
+  margin-top: 28px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.people-grid {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+.person-art {
+  position: relative;
+  aspect-ratio: 1.4;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.person-dark {
+  background: var(--white);
+  color: var(--charcoal);
+}
+.person-yellow {
+  background: var(--yellow);
+  color: var(--charcoal);
+}
+.person-circle {
+  position: absolute;
+  height: 74%;
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  opacity: 0.55;
+  border-radius: 50%;
+}
+.person-workflow-icon {
+  position: relative;
+  width: 24%;
+  height: 34%;
+}
+.person h3 {
+  font-size: 17px;
+  font-weight: 650;
+  margin-top: 16px;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+.person > p {
+  font-size: 12px;
+  margin-top: 8px;
+  color: #c0c0c0;
+  line-height: 1.6;
+}
+.people-note {
+  font-size: 12px;
+  line-height: 1.7;
+  margin-top: 32px;
+  max-width: 65ch;
+}
+
+.person {
+  perspective: 1000px;
+}
+.person-art {
+  --card-edge: #b8b8b8;
+  transform: rotateX(5deg) rotateY(-4deg);
+  transform-style: preserve-3d;
+  background-image: linear-gradient(
+    145deg,
+    #ffffff50,
+    #ffffff00 55%,
+    #0000000c
+  );
+  box-shadow:
+    0 2px 0 var(--card-edge),
+    0 5px 0 var(--card-edge),
+    0 16px 24px #00000060,
+    inset 0 1px 0 #ffffffb3;
+  transition:
+    transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 300ms;
+}
+.person-yellow {
+  --card-edge: #a89e00;
+}
+.person:hover .person-art {
+  transform: translateY(-6px) rotateX(0deg) rotateY(0deg);
+}
+.person-circle {
+  opacity: 0.25;
+  box-shadow:
+    0 5px 8px #00000012,
+    inset 0 1px 0 #ffffff90;
+}
+.person-workflow-icon {
+  filter: drop-shadow(0 4px 2px #00000020);
+  animation: enquiry-motion 6s ease-in-out infinite;
+  transform-origin: center;
+}
+.person:nth-child(2) .person-workflow-icon {
+  animation-name: tools-motion;
+  animation-delay: -1.5s;
+}
+.person:nth-child(3) .person-workflow-icon {
+  animation-name: records-motion;
+  animation-delay: -3s;
+}
+.person:nth-child(4) .person-workflow-icon {
+  animation-name: followup-motion;
+  animation-delay: -4.5s;
+}
+@keyframes enquiry-motion {
+  0%,
+  65%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-6deg);
+  }
+  40% {
+    transform: translateY(-2px) rotate(4deg);
+  }
+}
+@keyframes tools-motion {
+  0%,
+  65%,
+  100% {
+    transform: rotate(0) scale(1);
+  }
+  30% {
+    transform: rotate(-10deg) scale(1.07);
+  }
+}
+@keyframes records-motion {
+  0%,
+  65%,
+  100% {
+    transform: translateY(0) rotateX(0);
+  }
+  30% {
+    transform: translateY(-4px) rotateX(18deg);
+  }
+}
+@keyframes followup-motion {
+  0%,
+  65%,
+  100% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(6px, -6px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .person-art,
+  .person:hover .person-art {
+    transform: none;
+    transition: none;
+  }
+  .person-workflow-icon {
+    animation: none;
+  }
+}
+
+.person-circle {
+  transform: rotate(-35deg) scaleX(0.64);
+  animation: card-atom-primary 18s linear infinite;
+  animation-delay: var(--atom-delay, 0s);
+}
+.person-circle-secondary {
+  transform: rotate(35deg) scaleX(0.64);
+  animation-name: card-atom-secondary;
+  animation-duration: 22s;
+}
+.person-circle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+}
+.person:nth-child(2) {
+  --atom-delay: -3s;
+}
+.person:nth-child(3) {
+  --atom-delay: -6s;
+}
+.person:nth-child(4) {
+  --atom-delay: -9s;
+}
+@keyframes card-atom-primary {
+  from {
+    transform: rotate(-35deg) scaleX(0.64);
+  }
+  to {
+    transform: rotate(325deg) scaleX(0.64);
+  }
+}
+@keyframes card-atom-secondary {
+  from {
+    transform: rotate(35deg) scaleX(0.64);
+  }
+  to {
+    transform: rotate(-325deg) scaleX(0.64);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .person-circle {
+    animation: none;
+  }
+}
+
+.person .person-workflow-icon {
+  animation: none;
+  transform: none;
+}

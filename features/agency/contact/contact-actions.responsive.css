@@ -1,0 +1,21 @@
+@media (max-width: 760px) {
+  .contact-options {
+    gap: 12px;
+  }
+  .contact-options .enquiry-trigger,
+  .contact-options .booking-link {
+    min-height: 48px;
+    padding: 14px 18px;
+    font-size: 12px;
+  }
+  .enquiry-dialog {
+    padding: 24px;
+  }
+  .contact-section .enquiry-dialog h2 {
+    font-size: 32px;
+  }
+  .enquiry-fields {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

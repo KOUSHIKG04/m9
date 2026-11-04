@@ -1,0 +1,51 @@
+.container {
+  width: min(100%, 1280px);
+  margin-inline: auto;
+}
+.section-pad {
+  padding: 92px var(--gutter);
+}
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 36px;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+}
+.section-label > span {
+  width: 5px;
+  height: 5px;
+  background: #918700;
+}
+.label-light {
+  color: var(--yellow);
+}
+.label-light > span {
+  background: var(--yellow);
+}
+.display-heading {
+  font-size: clamp(52px, 7.7vw, 108px);
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+  font-weight: 750;
+}
+.section-heading-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+}
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 24px;
+  z-index: 100;
+  padding: 16px 24px;
+  background: var(--yellow);
+  color: var(--charcoal);
+}
+.skip-link:focus {
+  top: 12px;
+}

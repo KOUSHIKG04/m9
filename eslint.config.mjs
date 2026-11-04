@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    ".impeccable/review/**",
+    ".agents/**",
+    // Licensed upstream Stageshow runtime; lint feature adaptations separately.
+    "components/stageshow/**",
   ]),
 ]);
 

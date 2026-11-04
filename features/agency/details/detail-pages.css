@@ -1,0 +1,107 @@
+.detail-page {
+  background: white;
+  min-height: 100vh;
+}
+.detail-page .site-header {
+  max-width: 1440px;
+  margin-inline: auto;
+}
+.detail-main {
+  padding: 60px var(--gutter) 100px;
+}
+.back-link {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 12px;
+  padding-block: 12px;
+  text-decoration: underline;
+}
+.detail-heading {
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  max-width: 1000px;
+  margin-top: 36px;
+}
+.detail-intro {
+  font-size: clamp(18px, 2.2vw, 26px);
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  max-width: 820px;
+  margin-top: 28px;
+}
+.detail-art {
+  margin-top: 56px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.detail-art .project-art {
+  aspect-ratio: 2;
+}
+.detail-art .nova-word {
+  font-size: clamp(90px, 15vw, 230px);
+}
+.detail-art .kinetic-word {
+  font-size: clamp(130px, 28vw, 400px);
+}
+.detail-art .pulse-word {
+  font-size: 30px;
+}
+.detail-art .equalizer {
+  gap: 25px;
+}
+.detail-art .equalizer > span {
+  max-width: 60px;
+}
+.detail-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  margin-top: 64px;
+}
+.detail-body h2 {
+  font-size: 30px;
+  letter-spacing: -0.04em;
+  margin-bottom: 20px;
+}
+.detail-body p,
+.article-body p {
+  color: #454545;
+  font-size: 16px;
+  line-height: 1.85;
+}
+.detail-deliverables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 36px 0 0;
+}
+.detail-deliverables li {
+  padding: 10px 17px;
+  border: 1px solid #d1d1d1;
+  border-radius: 99px;
+  font-size: 12px;
+}
+.concept-note {
+  font-size: 12px;
+  color: #626262;
+  margin-top: 22px;
+  line-height: 1.7;
+}
+.article-body {
+  max-width: 720px;
+  margin: 56px auto 0;
+}
+.article-body p + p {
+  margin-top: 26px;
+}
+.article-body .m9-button {
+  margin-top: 36px;
+}
+.article-page .detail-intro {
+  max-width: 900px;
+}

@@ -1,0 +1,46 @@
+@media (max-width: 760px) {
+  .outline-label {
+    font-size: 9px;
+    margin-bottom: 0;
+    padding: 8px 11px;
+  }
+  .section-intro {
+    font-size: 12px;
+    max-width: 350px;
+  }
+  .project-grid {
+    gap: 30px 16px;
+    margin-top: 36px;
+  }
+  .project-badge {
+    right: 10px;
+    top: 10px;
+    font-size: 6px;
+    padding: 4px 6px;
+  }
+  .art-wrap {
+    border-radius: 12px;
+  }
+  .project-caption {
+    padding-top: 13px;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .project-caption h3 {
+    font-size: 18px;
+  }
+  .project-caption p {
+    font-size: 8px;
+    line-height: 1.6;
+    max-width: 130px;
+  }
+}
+@media (max-width: 370px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-caption p {
+    max-width: none;
+    font-size: 10px;
+  }
+}

@@ -1,0 +1,80 @@
+@media (min-width: 1600px) {
+  .hero {
+    height: 860px;
+  }
+}
+@media (max-width: 1000px) {
+  .hero {
+    height: 680px;
+    min-height: 580px;
+    max-height: 800px;
+  }
+  .hero-burst {
+    width: 55vw;
+  }
+}
+@media (max-width: 760px) {
+  .hero-shell {
+    padding: 12px;
+    background-size: 20% 100%;
+  }
+  .hero {
+    border-radius: 0;
+    height: calc(88svh - 24px);
+    min-height: 580px;
+    max-height: 790px;
+  }
+  .hero-center {
+    inset: 95px 0 110px;
+  }
+  .hero h1 {
+    font-size: 24.5vw;
+    letter-spacing: -0.075em;
+  }
+  .hero-burst {
+    width: 91vw;
+    max-width: 520px;
+  }
+  .hero-statement {
+    font-size: clamp(32px, 7.6vw, 46px);
+  }
+  .hero-side {
+    left: 13px;
+    top: 24%;
+    font-size: 7px;
+  }
+  .hero-bottom {
+    bottom: 26px;
+    left: 22px;
+    right: 22px;
+    font-size: 8px;
+  }
+  .hero-bottom > span {
+    font-size: 10px;
+    gap: 7px;
+  }
+  .discipline-ribbon {
+    padding-block: 13px;
+  }
+  .ribbon-group > span {
+    font-size: 25px;
+    gap: 13px;
+    padding-left: 13px;
+  }
+  .ribbon-group svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+@media (prefers-reduced-motion: reduce), (hover: none) {
+  .hero-burst {
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-center {
+    top: 112px;
+  }
+}

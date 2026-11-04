@@ -1,0 +1,59 @@
+.section-fade {
+  --fade-from: var(--charcoal);
+  --fade-to: var(--white);
+  height: clamp(48px, 6vw, 88px);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--fade-from) 0%,
+    color-mix(in srgb, var(--fade-from) 97%, var(--fade-to)) 15%,
+    color-mix(in srgb, var(--fade-from) 85%, var(--fade-to)) 30%,
+    color-mix(in srgb, var(--fade-from) 50%, var(--fade-to)) 50%,
+    color-mix(in srgb, var(--fade-from) 15%, var(--fade-to)) 70%,
+    color-mix(in srgb, var(--fade-from) 3%, var(--fade-to)) 85%,
+    var(--fade-to) 100%
+  );
+}
+.fade-from-light {
+  --fade-from: var(--white);
+}
+.fade-from-black {
+  --fade-from: #000;
+}
+.fade-to-dark {
+  --fade-to: var(--charcoal);
+}
+.fade-to-yellow {
+  --fade-to: var(--yellow);
+}
+.fade-to-black {
+  --fade-to: #000;
+}
+
+.fade-from-yellow {
+  --fade-from: var(--yellow);
+}
+
+/* Cover subpixel joins on mobile without removing the section color fades. */
+@media (max-width: 760px) {
+  .section-fade {
+    position: relative;
+    z-index: 1;
+    margin-block: -1px;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+    background: linear-gradient(
+      to bottom,
+      var(--fade-from) 0%,
+      var(--fade-from) 8%,
+      color-mix(in srgb, var(--fade-from) 97%, var(--fade-to)) 18%,
+      color-mix(in srgb, var(--fade-from) 85%, var(--fade-to)) 32%,
+      color-mix(in srgb, var(--fade-from) 50%, var(--fade-to)) 50%,
+      color-mix(in srgb, var(--fade-from) 15%, var(--fade-to)) 68%,
+      color-mix(in srgb, var(--fade-from) 3%, var(--fade-to)) 82%,
+      var(--fade-to) 92%,
+      var(--fade-to) 100%
+    );
+  }
+}

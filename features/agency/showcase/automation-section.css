@@ -1,0 +1,36 @@
+.automation-section {
+  background: var(--charcoal);
+  color: var(--white);
+}
+.automation-intro {
+  max-width: 65ch;
+  margin-top: 28px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.automation-section .automation-preview {
+  margin-top: 64px;
+}
+@media (max-width: 760px) {
+  .automation-intro {
+    font-size: 14px;
+  }
+  .automation-section .automation-preview {
+    margin-top: 40px;
+  }
+}
+
+.automation-section .display-heading,
+.automation-section .automation-preview h3 {
+  color: var(--yellow);
+}
+.automation-section .automation-flow li {
+  background: var(--yellow);
+  color: var(--charcoal);
+}
+.automation-section .automation-flow li > span {
+  color: var(--charcoal);
+}
+.automation-section .automation-flow .automation-connector {
+  color: var(--yellow);
+}

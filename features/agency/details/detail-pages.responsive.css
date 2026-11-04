@@ -1,0 +1,37 @@
+@media (max-width: 760px) {
+  .detail-main {
+    padding-top: 30px;
+    padding-bottom: 64px;
+  }
+  .detail-heading {
+    font-size: clamp(44px, 10vw, 68px);
+  }
+  .detail-intro {
+    font-size: 18px;
+  }
+  .detail-art {
+    margin-top: 36px;
+  }
+  .detail-art .project-art {
+    aspect-ratio: 1.2;
+  }
+  .detail-body {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 38px;
+  }
+  .detail-body h2 {
+    font-size: 27px;
+    margin-bottom: 12px;
+  }
+  .detail-body p,
+  .article-body p {
+    font-size: 15px;
+  }
+  .detail-art .equalizer {
+    gap: 12px;
+  }
+  .article-body {
+    margin-top: 36px;
+  }
+}

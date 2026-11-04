@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MOTIVE 9
 
-## Getting Started
+A PDF-led freelance agency website built with Next.js App Router, React, TypeScript, Tailwind CSS, and the existing shadcn/Base UI installation.
 
-First, run the development server:
+## Run locally
 
-```bash
+```sh
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```sh
+npm run format
+npm run format:check
+npm run lint
+npm run typecheck
+npm run check:architecture
+npm run build
+```
 
-## Learn More
+## Edit content
 
-To learn more about Next.js, take a look at the following resources:
+`features/agency/content.ts` owns services, concept projects, original journal articles, while features/agency/contact/contact-config.ts owns the migrated email, Cal.com booking URL, and public Formspree endpoint. Work and journal detail routes are statically generated from that content. `app/globals.css` contains tokens, resets, and global accessibility rules. Each agency section/component owns its CSS and responsive CSS beside its TSX. `features/agency/agency.css` is the ordered stylesheet entry point imported by the root layout. The SVG artwork lives with the agency feature.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Portfolio entries are independent concepts, not claimed client engagements. Studio tiles represent disciplines, not named team members. The contact integrations match the older Motive9 project. The enquiry form submits name, email, message, and the existing subject to Formspree; it handles pending, success, network failure, and rate limiting. Booking opens the existing Cal.com event in a new tab. Contact data is sent to Formspree and is not stored by this Next.js app.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+See `docs/architecture.md` for the Vaastu decisions, `PRODUCT.md` for product facts, and `DESIGN.md` for the reference-led visual system.
 
-## Deploy on Vercel
+## Formatting
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Prettier uses the same configuration as the older Motive9 project. Run `npm run format` to format maintained files and `npm run format:check` to verify them. Generated output, installed skills, lockfiles, and the copied upstream Stageshow runtime are excluded.

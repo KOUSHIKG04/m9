@@ -1,0 +1,28 @@
+@media (max-width: 1000px) {
+  .journal-copy {
+    padding: 18px;
+  }
+  .article-meta {
+    font-size: 7px;
+  }
+}
+@media (max-width: 760px) {
+  .journal-grid {
+    gap: 24px;
+    grid-template-columns: 1fr;
+    margin-top: 36px;
+  }
+  .journal-copy {
+    padding: 23px;
+  }
+  .article-meta {
+    font-size: 8px;
+  }
+  .journal-card h3 {
+    font-size: 25px;
+    max-width: 290px;
+  }
+  .read-article {
+    padding-top: 28px;
+  }
+}
