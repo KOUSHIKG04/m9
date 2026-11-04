@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "vaastu": {
+      "source": "KOUSHIKG04/scalable-architecture-skill",
+      "sourceType": "github",
+      "skillPath": "skills/vaastu/SKILL.md",
+      "computedHash": "b4829a62ae84463d5956a6c83ff35767eadcbf40feb5c880d3947b33aa9a6b02"
+    }
+  }
+}
