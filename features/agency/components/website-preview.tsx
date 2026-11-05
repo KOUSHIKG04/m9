@@ -42,6 +42,7 @@ export function WebsitePreview() {
                   className="preview-site-links"
                   aria-label="Example site navigation"
                 >
+                  <strong className="preview-site-logo">LOGO!!</strong>
                   <span>Design</span>
                   <span>Build</span>
                   <span>Launch</span>

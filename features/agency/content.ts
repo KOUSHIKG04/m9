@@ -10,7 +10,7 @@ export const agency = {
 export const services = [
   {
     title: "Web & App Development",
-    text: "Websites, e-commerce interfaces, web apps, SaaS MVPs, and mobile and desktop apps built around your business. We bring [react], [nextdotjs], and [typescript] together with APIs, authentication, databases, payments, and real-time features. From [figma] designs to launch, we handle the build and integrations, including [supabase] and [stripe].",
+    text: "Websites, e-commerce interfaces, web apps, SaaS MVPs, and mobile and desktop apps built around your business. We bring [react], [nextdotjs], and [typescript] together with APIs, authentication, databases, payments, and real-time features. From [figma] designs to launch, we handle the build and integrations, including [supabase] and [razorpay].",
   },
   {
     title: "UI/UX Design",

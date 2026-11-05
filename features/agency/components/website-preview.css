@@ -258,8 +258,10 @@
 }
 .preview-site-links {
   position: absolute;
-  top: 24px;
-  right: 88px;
+  text-transform: uppercase;
+  top: 32px;
+  left: 40px;
+  right: 80px;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -268,8 +270,14 @@
   white-space: nowrap;
 }
 .preview-compact .preview-site-links {
-  top: 20px;
-  right: 56px;
+  top: 28px;
+  left: 28px;
+  right: 48px;
   gap: 10px;
   font-size: 9px;
+}
+
+.preview-site-logo {
+  margin-right: auto;
+  font-weight: 700;
 }

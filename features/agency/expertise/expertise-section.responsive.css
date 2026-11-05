@@ -15,6 +15,11 @@
     --service-columns: 32px minmax(0, 1fr) 36px;
     --service-gap: 13px;
   }
+  .service .service-toggle {
+    width: 28px;
+    height: 28px;
+    min-height: 28px;
+  }
   .service summary {
     padding-block: 21px;
   }
@@ -32,7 +37,7 @@
     gap: 20px var(--service-gap);
   }
   .service-description > p {
-    font-size: 13px;
+    font-size: 15px;
   }
 }
 @media (max-width: 370px) {

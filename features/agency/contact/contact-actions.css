@@ -9,7 +9,7 @@
   inset: 0;
   margin: auto;
   border: 0;
-  padding: 32px;
+  padding: 28px;
   width: min(560px, calc(100vw - 32px));
   max-height: calc(100svh - 32px);
   overflow: auto;
@@ -26,7 +26,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 .enquiry-heading > span {
   font-size: 10px;
@@ -40,13 +40,13 @@
   font-weight: 600;
 }
 .enquiry-dialog > p {
-  margin-top: 16px;
+  margin-top: 12px;
   font-size: 14px;
   line-height: 1.65;
   color: #626262;
 }
 .enquiry-dialog form {
-  margin-top: 28px;
+  margin-top: 20px;
 }
 .enquiry-dialog fieldset {
   border: 0;
@@ -63,13 +63,17 @@
   display: block;
   font-size: 12px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .enquiry-dialog input,
 .enquiry-dialog textarea {
   display: block;
   width: 100%;
   background: #f7f7f7;
+  box-shadow:
+    inset 0 2px 5px rgb(40 23 54 / 16%),
+    inset 1px 0 3px rgb(40 23 54 / 16%),
+    inset 0 -1px 1px rgb(255 255 255 / 85%);
   color: var(--charcoal);
   border: 1px solid #d1d1d1;
   border-radius: 8px;
@@ -90,11 +94,11 @@
 }
 .enquiry-dialog textarea {
   resize: vertical;
-  min-height: 128px;
+  min-height: 112px;
   max-height: 280px;
 }
 .enquiry-fields + label {
-  margin-top: 20px;
+  margin-top: 16px;
 }
 .enquiry-privacy {
   font-size: 11px;
@@ -114,10 +118,10 @@
   overflow-wrap: anywhere;
 }
 .enquiry-form-actions {
-  margin-top: 24px;
+  margin-top: 16px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 12px;
 }
 .enquiry-success {
@@ -143,4 +147,17 @@
 .enquiry-dialog {
   --button-primary-bg: var(--yellow);
   --button-primary-fg: var(--charcoal);
+}
+
+.enquiry-field-error {
+  margin-top: 8px;
+  color: #a32620;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.enquiry-dialog :is(input, textarea)[aria-invalid="true"] {
+  border-color: #a32620;
+}
+.enquiry-dialog [data-sonner-toaster] {
+  text-align: left;
 }

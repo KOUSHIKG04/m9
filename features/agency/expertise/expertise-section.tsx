@@ -49,7 +49,7 @@ export function ExpertiseSection() {
             </summary>
             <div className="service-description">
               <p>
-                {service.text.split(/(\[[a-z]+\])/g).map((part, index) => {
+                {service.text.split(/(\[[a-z0-9]+\])/g).map((part, index) => {
                   const tool = part.startsWith("[") ? part.slice(1, -1) : null;
                   return tool && toolLabels[tool] ? (
                     <span
@@ -58,7 +58,7 @@ export function ExpertiseSection() {
                       title={toolLabels[tool]}
                     >
                       <Image
-                        src={["/tools/", tool, ".svg"].join("")}
+                        src={["/tools/color/", tool, ".svg"].join("")}
                         alt={toolLabels[tool]}
                         width={22}
                         height={22}

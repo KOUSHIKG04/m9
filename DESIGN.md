@@ -182,3 +182,11 @@ All controls are flat and filled, without 3D shadows or gradients. The header co
 ## Current button shape and labels
 
 All text buttons use a full pill radius (999px); icon controls, including service chevrons, are circular. Controls remain flat, filled, and shadow-free. Secondary/ghost buttons are white with charcoal text and a subtle neutral border. Diagonal arrow icons are removed from action buttons and the illustrative button; decorative arrow-only project markers are removed while the whole project card remains a link. Header actions read Book a call and Explore; Explore leads to the service section.
+
+## Enquiry and service interaction refinements
+
+The enquiry fields use the recessed inset shadows from the older Motive9 form. Validation appears beside each field, and failed requests show inline recovery guidance plus a Sonner toast within the native dialog. The form has one Send action with a horizontal send icon. The close icon remains available outside the pending state.
+
+Hero spikes react to mouse movement anywhere in the hero shell, extending radially toward the pointer and resetting on exit. Touch and reduced-motion users receive the static artwork. Service descriptions are 2px larger at each breakpoint; inline tool logos, including n8n, have dimensional shadows and the footer social icons' hover movement. The footer wordmark reads motive9 in lowercase.
+
+Service description logos use dedicated brand-color SVG variants, retaining their depth and hover movement. The right-hand chevron circles measure 32px on desktop and 28px on mobile; the full service summary remains clickable.

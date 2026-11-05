@@ -61,7 +61,7 @@ export function ContactFooter() {
         </a>
       </div>
       <div className="footer-wordmark" aria-hidden="true">
-        <span>MOTIVE9</span>
+        <span>motive9</span>
       </div>
       <div className="container footer-meta-container">
         <div className="footer-bottom">

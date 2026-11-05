@@ -3,7 +3,8 @@
 import { ButtonLink } from "@/components/ui/button-link";
 
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
-import { Check, X } from "lucide-react";
+import { Check, SendHorizontal, X } from "lucide-react";
+import { toast, Toaster } from "sonner";
 import { Button } from "@/components/ui/button";
 import { calBookingUrl, contactEmail, enquiryEndpoint } from "./contact-config";
 
@@ -14,10 +15,31 @@ export function ContactActions() {
   const pending = useRef<AbortController | null>(null);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<
+    Partial<Record<"name" | "email" | "details", string>>
+  >({});
+  const mounted = useRef(false);
   const formId = useId();
   const submitting = status === "submitting";
 
-  useEffect(() => () => pending.current?.abort(), []);
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+      pending.current?.abort();
+      toast.dismiss(`${formId}-enquiry`);
+    };
+  }, [formId]);
+
+  function showError(message: string) {
+    setStatus("error");
+    setError(message);
+    toast.error("Enquiry not sent", {
+      description: message,
+      id: `${formId}-enquiry`,
+      duration: 8000,
+    });
+  }
 
   async function submitEnquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -27,11 +49,22 @@ export function ContactActions() {
     const name = String(data.get("name") ?? "").trim();
     const email = String(data.get("email") ?? "").trim();
     const details = String(data.get("details") ?? "").trim();
-    if (!name || !email || !details) {
-      setStatus("error");
-      setError("Please enter your name, email address, and project details.");
+    const errors: typeof fieldErrors = {};
+    if (!name) errors.name = "Please enter your name.";
+    const emailInput = form.elements.namedItem("email") as HTMLInputElement;
+    if (!email) errors.email = "Please enter your email address.";
+    else if (!emailInput.validity.valid)
+      errors.email = "Enter a valid email address, like you@example.com.";
+    if (!details) errors.details = "Please tell us about your project.";
+    setFieldErrors(errors);
+    setError("");
+    if (Object.keys(errors).length) {
+      setStatus("idle");
+      const firstField = Object.keys(errors)[0];
+      (form.elements.namedItem(firstField) as HTMLElement)?.focus();
       return;
     }
+    toast.dismiss(`${formId}-enquiry`);
     data.set("name", name);
     data.set("email", email);
     data.set("message", details);
@@ -49,9 +82,9 @@ export function ContactActions() {
         headers: { Accept: "application/json" },
         signal: controller.signal,
       });
+      if (!mounted.current) return;
       if (!response.ok) {
-        setStatus("error");
-        setError(
+        showError(
           response.status === 429
             ? "Too many attempts. Please wait a little, then try again or email us directly."
             : "Your enquiry wasn’t sent. Please try again or email us directly.",
@@ -60,9 +93,13 @@ export function ContactActions() {
       }
       form.reset();
       setStatus("success");
+      toast.success("Enquiry sent", {
+        description: "Thanks! We’ll get back to you by email.",
+        id: `${formId}-enquiry`,
+      });
     } catch {
-      setStatus("error");
-      setError(
+      if (!mounted.current) return;
+      showError(
         controller.signal.aborted
           ? "The request timed out. Please try again or email us directly."
           : "We couldn’t connect. Check your connection and try again, or email us directly.",
@@ -102,10 +139,12 @@ export function ContactActions() {
         className="enquiry-dialog"
         aria-labelledby={`${formId}-title`}
         aria-describedby={`${formId}-description`}
+        onClose={() => toast.dismiss(`${formId}-enquiry`)}
         onCancel={(event) => {
           if (submitting) event.preventDefault();
         }}
       >
+        <Toaster position="top-center" closeButton theme="light" />
         <div className="enquiry-heading">
           <Button
             variant="ghost"
@@ -138,7 +177,23 @@ export function ContactActions() {
           <form
             action={enquiryEndpoint}
             method="POST"
+            noValidate
             onSubmit={submitEnquiry}
+            onInput={(event) => {
+              const input = event.target as
+                HTMLInputElement | HTMLTextAreaElement;
+              if (
+                input.name === "name" ||
+                input.name === "email" ||
+                input.name === "details"
+              ) {
+                const field = input.name;
+                setFieldErrors((previous) => ({
+                  ...previous,
+                  [field]: undefined,
+                }));
+              }
+            }}
             aria-busy={submitting}
           >
             <fieldset disabled={submitting}>
@@ -148,34 +203,73 @@ export function ContactActions() {
                   <input
                     id={`${formId}-name`}
                     name="name"
+                    aria-invalid={Boolean(fieldErrors.name)}
+                    aria-describedby={
+                      fieldErrors.name ? `${formId}-name-error` : undefined
+                    }
                     autoComplete="name"
                     placeholder="Your name"
                     required
                     maxLength={100}
                   />
+                  {fieldErrors.name && (
+                    <p
+                      id={`${formId}-name-error`}
+                      className="enquiry-field-error"
+                      role="alert"
+                    >
+                      {fieldErrors.name}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor={`${formId}-email`}>Email</label>
                   <input
                     id={`${formId}-email`}
                     name="email"
+                    aria-invalid={Boolean(fieldErrors.email)}
+                    aria-describedby={
+                      fieldErrors.email ? `${formId}-email-error` : undefined
+                    }
                     type="email"
                     autoComplete="email"
                     placeholder="you@example.com"
                     required
                     maxLength={254}
                   />
+                  {fieldErrors.email && (
+                    <p
+                      id={`${formId}-email-error`}
+                      className="enquiry-field-error"
+                      role="alert"
+                    >
+                      {fieldErrors.email}
+                    </p>
+                  )}
                 </div>
               </div>
               <label htmlFor={`${formId}-details`}>Project details</label>
               <textarea
                 id={`${formId}-details`}
                 name="details"
+                aria-invalid={Boolean(fieldErrors.details)}
+                aria-describedby={
+                  fieldErrors.details ? `${formId}-details-error` : undefined
+                }
                 rows={4}
                 placeholder="What would you like to build?"
                 required
                 maxLength={2000}
               />
+              {fieldErrors.details && (
+                <p
+                  id={`${formId}-details-error`}
+                  className="enquiry-field-error"
+                  role="alert"
+                >
+                  {fieldErrors.details}
+                </p>
+              )}
               {status === "error" && (
                 <p className="enquiry-error" role="alert">
                   {error}{" "}
@@ -187,16 +281,9 @@ export function ContactActions() {
                 respond to your enquiry.
               </p>
               <div className="enquiry-form-actions">
-                <Button
-                  variant="ghost"
-                  className="enquiry-cancel"
-                  onClick={() => dialog.current?.close()}
-                  type="button"
-                >
-                  Cancel
-                </Button>
                 <Button disabled={submitting} type="submit">
-                  {submitting ? "Sending…" : "Send enquiry"}
+                  {submitting ? "Sending…" : "Send"}
+                  <SendHorizontal size={16} aria-hidden="true" />
                 </Button>
               </div>
             </fieldset>
