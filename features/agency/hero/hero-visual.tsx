@@ -26,6 +26,8 @@ export function HeroVisual() {
   useEffect(() => {
     const surface = root.current?.closest<HTMLElement>(".hero-shell");
     if (!surface) return;
+    let pulseTimeout: number | undefined;
+    const tapRings = new Map<HTMLSpanElement, Animation>();
 
     function getSpikes() {
       if (!spikes.current.length) {
@@ -85,17 +87,17 @@ export function HeroVisual() {
       frame.current = requestAnimationFrame(tick);
     }
 
-    function moveSpikes(event: PointerEvent) {
-      if (
-        event.pointerType !== "mouse" ||
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      )
-        return;
+    function updateSpikes(
+      clientX: number,
+      clientY: number,
+      maximumExtension = 45,
+    ) {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       const svg = root.current?.querySelector<SVGSVGElement>(".hero-burst");
       if (!svg) return;
       const bounds = svg.getBoundingClientRect();
-      const cursorX = ((event.clientX - bounds.left) * 500) / bounds.width;
-      const cursorY = ((event.clientY - bounds.top) * 500) / bounds.height;
+      const cursorX = ((clientX - bounds.left) * 500) / bounds.width;
+      const cursorY = ((clientY - bounds.top) * 500) / bounds.height;
       for (const spike of getSpikes()) {
         // Directional influence reaches every part of the hero, even outside the SVG.
         const offsetX = cursorX - 250;
@@ -107,14 +109,67 @@ export function HeroVisual() {
               distance
             : 0;
         const influence = Math.max(0, Math.min(1, (alignment - 0.9) / 0.1));
-        const extension = 45 * influence * influence;
+        const extension = maximumExtension * influence * influence;
         spike.targetX = spike.baseX + spike.directionX * extension;
         spike.targetY = spike.baseY + spike.directionY * extension;
       }
       animateSpikes();
     }
 
+    function moveSpikes(event: PointerEvent) {
+      if (event.pointerType !== "mouse") return;
+      window.clearTimeout(pulseTimeout);
+      updateSpikes(event.clientX, event.clientY);
+    }
+
+    function showTapRing(clientX: number, clientY: number) {
+      if (!surface) return;
+      const bounds = surface.getBoundingClientRect();
+      const ring = document.createElement("span");
+      ring.className = "hero-tap-ring";
+      ring.setAttribute("aria-hidden", "true");
+      ring.style.left = `${clientX - bounds.left}px`;
+      ring.style.top = `${clientY - bounds.top}px`;
+      const burstWidth = root.current
+        ?.querySelector<SVGSVGElement>(".hero-burst")
+        ?.getBoundingClientRect().width;
+      ring.style.borderWidth = `${(burstWidth ?? 500) / 500}px`;
+      surface.appendChild(ring);
+      const animation = ring.animate(
+        [
+          { width: "7.2px", height: "7.2px", opacity: 0.95 },
+          { width: "432px", height: "432px", opacity: 0 },
+        ],
+        {
+          duration: 1200,
+          easing: "cubic-bezier(0.22, 0.61, 0.36, 1)",
+          fill: "forwards",
+        },
+      );
+      tapRings.set(ring, animation);
+      const removeRing = () => {
+        tapRings.delete(ring);
+        ring.remove();
+      };
+      void animation.finished.then(removeRing, removeRing);
+    }
+
+    function activateSpikes(event: MouseEvent) {
+      if (event.button !== 0 || event.detail === 0) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      window.clearTimeout(pulseTimeout);
+      showTapRing(event.clientX, event.clientY);
+      // A tap sends a short, even burst around the full circle.
+      for (const spike of getSpikes()) {
+        spike.targetX = spike.baseX + spike.directionX * 45;
+        spike.targetY = spike.baseY + spike.directionY * 45;
+      }
+      animateSpikes();
+      pulseTimeout = window.setTimeout(resetSpikes, 350);
+    }
+
     function resetSpikes() {
+      window.clearTimeout(pulseTimeout);
       for (const spike of getSpikes()) {
         spike.targetX = spike.baseX;
         spike.targetY = spike.baseY;
@@ -122,9 +177,17 @@ export function HeroVisual() {
       animateSpikes();
     }
 
+    surface.addEventListener("click", activateSpikes);
     surface.addEventListener("pointermove", moveSpikes);
     surface.addEventListener("pointerleave", resetSpikes);
     return () => {
+      window.clearTimeout(pulseTimeout);
+      for (const [ring, animation] of tapRings) {
+        animation.cancel();
+        ring.remove();
+      }
+      tapRings.clear();
+      surface.removeEventListener("click", activateSpikes);
       surface.removeEventListener("pointermove", moveSpikes);
       surface.removeEventListener("pointerleave", resetSpikes);
       if (frame.current !== null) cancelAnimationFrame(frame.current);
@@ -141,7 +204,7 @@ export function HeroVisual() {
     <div ref={root} className="hero-center">
       <Starburst className="hero-burst" />
       <h1>
-        MOTIVE 9<span className="sr-only"> Independent creative agency</span>
+        MOTIVE9<span className="sr-only"> Independent creative agency</span>
       </h1>
       <p className="hero-statement">
         We’re a creative
