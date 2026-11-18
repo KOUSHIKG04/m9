@@ -1,5 +1,16 @@
 import { contactEmail } from "./contact/contact-config";
 
+export const agencyServiceArea = {
+  "@type": "City",
+  name: "Shivamogga",
+  alternateName: "Shimoga",
+  containedInPlace: {
+    "@type": "State",
+    name: "Karnataka",
+    containedInPlace: { "@type": "Country", name: "India" },
+  },
+};
+
 export const agency = {
   name: "MOTIVE 9",
   copyrightYear: 2026,

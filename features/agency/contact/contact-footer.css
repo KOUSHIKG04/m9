@@ -142,3 +142,7 @@
   color: #171717;
   -webkit-text-fill-color: currentColor;
 }
+.contact-footer-only {
+  display: flow-root;
+  padding-top: 0;
+}

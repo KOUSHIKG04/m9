@@ -12,6 +12,21 @@
 .agency-section h2 > span {
   color: var(--yellow);
 }
+.agency-local-copy {
+  max-width: 68ch;
+  margin-top: 24px;
+  color: #c7c7c7;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.agency-local-copy a {
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.agency-local-copy a:hover {
+  color: var(--yellow);
+}
 .agency-details {
   margin-top: 80px;
   padding-top: 35px;

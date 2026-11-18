@@ -5,28 +5,39 @@ import { agency } from "../content";
 import { SectionLabel } from "../shared/section-label";
 import { ContactActions } from "./contact-actions";
 
-export function ContactFooter() {
+export function ContactFooter({
+  footerOnly = false,
+}: {
+  footerOnly?: boolean;
+}) {
   return (
-    <footer id="contact" className="contact-section section-pad">
-      <div className="container">
-        <SectionLabel>IN GOOD COMPANY</SectionLabel>
-        <div className="contact-heading-row">
-          <h2>
-            <span>Let&apos;s make something</span>
-            <span>unforgettable.</span>
-          </h2>
-        </div>
-        <div className="contact-actions">
-          <ContactActions />
-        </div>
-      </div>
-      <div className="contact-testimonial-fade contact-testimonial-fade-before">
-        <SectionFade from="yellow" to="dark" />
-      </div>
-      <TestimonialsSection />
-      <div className="contact-testimonial-fade">
-        <SectionFade from="dark" to="yellow" />
-      </div>
+    <footer
+      id="contact"
+      className={`contact-section section-pad${footerOnly ? " contact-footer-only" : ""}`}
+    >
+      {!footerOnly && (
+        <>
+          <div className="container">
+            <SectionLabel>IN GOOD COMPANY</SectionLabel>
+            <div className="contact-heading-row">
+              <h2>
+                <span>Let&apos;s make something</span>
+                <span>unforgettable.</span>
+              </h2>
+            </div>
+            <div className="contact-actions">
+              <ContactActions />
+            </div>
+          </div>
+          <div className="contact-testimonial-fade contact-testimonial-fade-before">
+            <SectionFade from="yellow" to="dark" />
+          </div>
+          <TestimonialsSection />
+          <div className="contact-testimonial-fade">
+            <SectionFade from="dark" to="yellow" />
+          </div>
+        </>
+      )}
       <div className="footer-socials" aria-label="Social media">
         <a
           href="https://www.instagram.com/motive_9_?cplk=MWdvYzlnc3l2Znc0dw%3D%3D&utm_source=qr"

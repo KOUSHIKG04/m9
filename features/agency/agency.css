@@ -10,6 +10,9 @@
 @import "./journal/journal-section.css";
 @import "./contact/contact-footer.css";
 @import "./details/detail-pages.css";
+@import "./details/service-detail.css";
+@import "./approach/approach-section.css";
+@import "./testimonials/testimonials-section.css";
 @import "./shared/agency-shared.responsive.css";
 @import "./hero/hero-section.responsive.css";
 @import "./components/site-header.responsive.css";
@@ -30,7 +33,5 @@
 
 @import "./showcase/showcase-section.css";
 @import "./shared/section-fade.css";
-
-@import "./testimonials/testimonials-section.css";
 
 @import "./showcase/automation-section.css";

@@ -1,0 +1,12 @@
+﻿# Approach refinement
+
+The final refinement restores yellow/white artwork tiles above text, with gentle dimensional floating similar to the existing automation tiles. There is no surrounding charcoal card. The black section, heading, introduction, and all six principle titles and descriptions remain unchanged. This is an ordinary extension of the existing M9 world; `DESIGN.md` and `.impeccable/design.json` remain unchanged.
+
+Tiles use 12px corners, layered edges, a soft shadow and highlight, a decorative orbit, and 32px Lucide icons. A transform-only 7.2-second ease-in-out loop raises each tile by up to 6px while changing its small X/Y rotations. Negative delays stagger successive tiles in 1.2-second steps. The 1280px container holds six columns above 1000px, three from 761-1000px, and one at 760px and below. Mobile places a 72px square tile on the left and the accordion on the right. Each title and yellow chevron form a native `details`/`summary` disclosure. Descriptions start hidden because no `open` attribute is set. The shared `name="approach-principles"` makes opening exclusive in supporting browsers. Summary titles have no reserved minimum height; the chevron rotates when open, and keyboard focus has an explicit outline. Reduced motion removes the chevron transition.
+
+`StudioPrincipleCards` is a client wrapper using `IntersectionObserver` and document `visibilitychange` to set `data-in-view`. CSS animations start paused and run only while the grid intersects the viewport and the page is visible. Cleanup disconnects the observer and removes the visibility listener. Reduced-motion rules remove animation and tile/icon transforms, preserving static artwork and copy. Decorative artwork remains `aria-hidden`.
+
+This treatment supersedes the intermediate unified charcoal cards and small badges. The earlier expertise disclosure and service loading changes remain separate: native service disclosures retain their descriptions/tool logos without service-page links, and the service route has a segment-local loading fallback.
+
+Reviewed final `approach-section.tsx`, `approach-section.css`, and `studio-principle-cards.tsx`. The current TypeScript and targeted lint passes are pending; the earlier architecture/source check passed. Browser/runtime verification was unavailable; floating rhythm, viewport/page-visibility pausing, reduced-motion appearance, responsive readability, exclusive disclosure behavior, keyboard interaction, and mobile alignment remain source-based assessments.
+

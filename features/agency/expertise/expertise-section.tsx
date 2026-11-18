@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { services } from "../content";
+
 import { SectionLabel } from "../shared/section-label";
 
 const toolLabels: Record<string, string> = {

@@ -3,7 +3,9 @@ import { HeroSection } from "./hero/hero-section";
 import { AgencySection } from "./about/agency-section";
 import { ExpertiseSection } from "./expertise/expertise-section";
 import { ShowcaseSection } from "./showcase/showcase-section";
+import { PortfolioSection } from "./portfolio/portfolio-section";
 import { PeopleSection } from "./people/people-section";
+import { ApproachSection } from "./approach/approach-section";
 import { ContactFooter } from "./contact/contact-footer";
 
 import { SectionFade } from "./shared/section-fade";
@@ -24,8 +26,11 @@ export function AgencyHome() {
         <PeopleSection />
         <SectionFade from="black" to="light" />
         <ShowcaseSection />
+        <SectionFade from="light" to="black" />
+        <PortfolioSection />
+        <ApproachSection />
       </main>
-      <SectionFade from="light" to="yellow" />
+      <SectionFade from="black" to="yellow" />
       <ContactFooter />
     </>
   );

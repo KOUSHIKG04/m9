@@ -1,0 +1,247 @@
+.m9-approach {
+  margin-top: 0;
+  background: #000;
+  color: var(--white);
+}
+
+.m9-approach > .container {
+  max-width: 1280px;
+}
+
+.approach-heading {
+  display: block;
+  margin-bottom: 40px;
+}
+
+.approach-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 16px;
+  color: var(--yellow);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.approach-eyebrow::before {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--yellow);
+  content: "";
+}
+
+.m9-approach h2 {
+  max-width: none;
+  font-size: clamp(18px, 4.4vw, 62px);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  white-space: nowrap;
+}
+
+.approach-intro {
+  max-width: 65ch;
+  margin-top: 24px;
+  color: #c7c7c7;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.approach-grid {
+  width: min(100%, 660px);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.approach-card {
+  min-width: 0;
+  perspective: 1000px;
+}
+.approach-art {
+  --approach-edge: #b8b8b8;
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1.25;
+  margin: 0 2px 16px;
+  border-radius: 12px;
+  color: var(--charcoal);
+  transform: rotateX(5deg) rotateY(-4deg);
+  transform-style: preserve-3d;
+  background-image: linear-gradient(
+    145deg,
+    #ffffff50,
+    #ffffff00 55%,
+    #0000000c
+  );
+  box-shadow:
+    0 2px 0 var(--approach-edge),
+    0 4px 0 var(--approach-edge),
+    0 12px 18px #00000060,
+    inset 0 1px 0 #ffffffb3;
+  animation: approach-float 7.2s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.approach-grid[data-in-view="true"] .approach-art {
+  animation-play-state: running;
+}
+.approach-card:nth-child(2) .approach-art {
+  animation-delay: -1.2s;
+}
+.approach-card:nth-child(3) .approach-art {
+  animation-delay: -2.4s;
+}
+.approach-card:nth-child(4) .approach-art {
+  animation-delay: -3.6s;
+}
+.approach-card:nth-child(5) .approach-art {
+  animation-delay: -4.8s;
+}
+.approach-card:nth-child(6) .approach-art {
+  animation-delay: -6s;
+}
+.approach-art-yellow {
+  --approach-edge: #a89e00;
+  background-color: var(--yellow);
+}
+.approach-art-white {
+  background-color: var(--white);
+}
+.approach-orbit {
+  position: absolute;
+  width: 52%;
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.25;
+}
+.approach-icon {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 3px 2px #00000020);
+  transform: translateZ(12px);
+}
+.approach-card h3 {
+  min-height: 2.8em;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+}
+.approach-copy {
+  margin-top: 10px;
+  color: #c0c0c0;
+  font-size: 13px;
+  line-height: 1.65;
+}
+@keyframes approach-float {
+  0%,
+  100% {
+    transform: translateY(0) rotateX(5deg) rotateY(-4deg);
+  }
+  50% {
+    transform: translateY(-6px) rotateX(1deg) rotateY(3deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .approach-art {
+    animation: none;
+    transform: none;
+  }
+  .approach-icon {
+    transform: none;
+  }
+}
+@media (min-width: 761px) and (max-width: 1000px) {
+  .approach-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .approach-heading {
+    display: block;
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 760px) {
+  .approach-heading {
+    display: block;
+    margin-bottom: 28px;
+  }
+  .approach-eyebrow {
+    margin-bottom: 12px;
+  }
+  .m9-approach h2 {
+    max-width: none;
+    font-size: clamp(18px, 4.4vw, 34px);
+  }
+  .approach-intro {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  .approach-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .approach-card {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    column-gap: 20px;
+  }
+  .approach-art {
+    align-self: start;
+    width: 72px;
+    aspect-ratio: 1;
+    margin: 0 2px 6px;
+  }
+  .approach-card h3 {
+    min-height: 0;
+    font-size: 16px;
+  }
+  .approach-copy {
+    grid-column: 2;
+    margin-top: 6px;
+  }
+}
+.approach-disclosure {
+  min-width: 0;
+}
+.approach-disclosure summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  cursor: pointer;
+  list-style: none;
+}
+.approach-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+.approach-disclosure summary h3 {
+  min-height: 0;
+}
+.approach-disclosure summary svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--yellow);
+  transition: transform 160ms ease-out;
+}
+.approach-disclosure[open] summary svg {
+  transform: rotate(180deg);
+}
+.approach-disclosure summary:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .approach-disclosure summary svg {
+    transition: none;
+  }
+}
+
+.approach-orbit-inner {
+  width: 36%;
+}

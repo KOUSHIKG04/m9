@@ -5,7 +5,7 @@ import { calBookingUrl } from "../contact/contact-config";
 export function SiteHeader() {
   return (
     <header className="site-header">
-      <div className="header-actions">
+      <nav className="header-actions" aria-label="Primary navigation">
         <div className="header-teamup">
           <ButtonLink size="sm" variant="secondary" href="/#contact">
             Let&apos;s team up
@@ -30,10 +30,10 @@ export function SiteHeader() {
           Book a call
           <span className="sr-only"> (opens in a new tab)</span>
         </ButtonLink>
-        <ButtonLink size="sm" className="header-cta" href="/#expertise">
-          Explore
+        <ButtonLink size="sm" className="header-cta" href="/#portfolio">
+          Explore projects
         </ButtonLink>
-      </div>
+      </nav>
     </header>
   );
 }
