@@ -40,20 +40,17 @@ export function PortfolioCarousel() {
 
   useEffect(() => {
     const element = gallery.current;
-    if (!element || reducedMotion) return;
+    if (!element || reducedMotion || total < 2) return;
     let visible = false;
     let dragging = false;
     let timer: number | undefined;
     function syncAutoplay() {
-      window.clearInterval(timer);
-      timer = undefined;
-      if (
-        visible &&
-        !document.hidden &&
-        !dragging &&
-        !element!.matches(":hover") &&
-        !element!.contains(document.activeElement)
-      )
+      if (!visible || document.hidden || dragging) {
+        window.clearInterval(timer);
+        timer = undefined;
+        return;
+      }
+      if (timer === undefined)
         timer = window.setInterval(
           () => setActive((current) => (current + 1) % total),
           3000,
@@ -63,34 +60,30 @@ export function PortfolioCarousel() {
       visible = entry.isIntersecting;
       syncAutoplay();
     });
-    const startDrag = () => {
+    const startDrag = (event: PointerEvent) => {
+      if (event.button !== 0) return;
       dragging = true;
       syncAutoplay();
     };
     const endDrag = () => {
+      if (!dragging) return;
       dragging = false;
       syncAutoplay();
     };
     observer.observe(element);
-    element.addEventListener("mouseenter", syncAutoplay);
-    element.addEventListener("mouseleave", syncAutoplay);
-    element.addEventListener("focusin", syncAutoplay);
-    element.addEventListener("focusout", syncAutoplay);
     element.addEventListener("pointerdown", startDrag);
     document.addEventListener("pointerup", endDrag);
     document.addEventListener("pointercancel", endDrag);
     document.addEventListener("visibilitychange", syncAutoplay);
+    window.addEventListener("blur", endDrag);
     return () => {
       window.clearInterval(timer);
       observer.disconnect();
-      element.removeEventListener("mouseenter", syncAutoplay);
-      element.removeEventListener("mouseleave", syncAutoplay);
-      element.removeEventListener("focusin", syncAutoplay);
-      element.removeEventListener("focusout", syncAutoplay);
       element.removeEventListener("pointerdown", startDrag);
       document.removeEventListener("pointerup", endDrag);
       document.removeEventListener("pointercancel", endDrag);
       document.removeEventListener("visibilitychange", syncAutoplay);
+      window.removeEventListener("blur", endDrag);
     };
   }, [reducedMotion]);
 
@@ -183,7 +176,12 @@ export function PortfolioCarousel() {
                   "--portfolio-offset": offsetFromCenter,
                   x: "-50%",
                   y: "-50%",
-                  z: reducedMotion ? 0 : distance === 0 ? 12 : -distance * 12,
+                  // Keep visible cards in front of the stage's pointer hit plane.
+                  z: reducedMotion
+                    ? 0
+                    : distance === 0
+                      ? 48
+                      : Math.max(0, (3 - distance) * 12),
                   rotateX: reducedMotion ? 0 : distance === 0 ? 5 : 3,
                   rotateY: reducedMotion
                     ? 0
